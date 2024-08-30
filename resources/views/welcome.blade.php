@@ -9,6 +9,9 @@
     <title>Livewire Course</title>
 </head>
 <body>
-    @livewire('counter')
+<div class="container mx-auto">
+    <livewire:counter/>
+    <livewire:todo-list/>
+</div>
 </body>
 </html>

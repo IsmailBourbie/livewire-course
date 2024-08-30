@@ -1,4 +1,5 @@
-<div>
+<div class="bg-red-100 py-8">
+    <h1 class="text-3xl underline px-4 py-2">Simple Counter:</h1>
     <ul class="flex space-x-4 items-center">
         <li class="px-4 py-2">
             <button
