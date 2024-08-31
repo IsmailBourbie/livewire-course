@@ -3,8 +3,10 @@
 namespace App\Livewire;
 
 use Illuminate\View\View;
+use Livewire\Attributes\Title;
 use Livewire\Component;
 
+#[Title('Todo List')]
 class TodoList extends Component
 {
 

@@ -1,4 +1,4 @@
-<div class="bg-purple-100 py-8">
+<div class="bg-green-100 py-8 h-full">
     <h1 class="text-3xl underline px-4 py-2">To Do list:</h1>
     <div class="p-4">
         <form action="" wire:submit.prevent="add">
