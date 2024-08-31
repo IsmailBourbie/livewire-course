@@ -9,11 +9,23 @@ class TodoList extends Component
 {
 
     public string $todoItem = '';
-    public array $todos = [
-        'clean the dishes',
-        'run tests',
-        'play video game',
-    ];
+    public array $todos = [];
+
+    public function mount(): void
+    {
+        // Common use case: fetch data from DB Ex: Todos::all();
+        $this->todos = [
+            'clean the dishes',
+            'run tests',
+            'play video game',
+        ];
+    }
+
+    public function updated($prop, $val): void
+    {
+        // Common use case: live validation;
+        $this->$prop = strtolower($val);
+    }
 
     public function add(): void
     {
