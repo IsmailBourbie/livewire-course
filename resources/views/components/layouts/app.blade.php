@@ -32,6 +32,12 @@
                     Show Posts
                 </a>
             </li>
+            <li>
+                <a href="/create-post"
+                   class="{{request()->is('create-post') ? "bg-purple-300 text-purple-700": "" }} text-blue-700 hover:bg-purple-300 text-lg font-bold inline-block w-full px-2 py-1 rounded ">
+                    Create Post
+                </a>
+            </li>
         </ul>
     </nav>
     <div class="flex-1">
