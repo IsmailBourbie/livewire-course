@@ -16,12 +16,18 @@
                 <label for="textarea-label" class="block text-sm font-medium mb-2">Content</label>
                 <textarea id="textarea-label"
                           class="py-3 px-4 block w-full border border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500"
-                          name="contnet"
+                          name="content"
+                          maxlength="100"
                           rows="3" placeholder="Say hi..."
                           wire:model="content"></textarea>
-                @error('content')
-                <em class="py-1 px-2 text-sm text-red-400 font-bold">{{ $message }}</em>
-                @enderror
+                <div class="flex">
+                    @error('content')
+                    <em class="py-1 px-2 text-sm text-red-400 font-bold">{{ $message }}</em>
+                    @enderror
+                    <small class="ml-auto text-gray-600 py-1 px-2">Characters: <span
+                            x-text="$wire.content.length"></span>/100</small>
+                </div>
+
             </div>
             <div>
                 <button type="submit"

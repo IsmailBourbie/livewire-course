@@ -15,6 +15,8 @@ class CreatePost extends Component
     #[Rule('min:4', message: 'Yo, too short')]
     public string $title = '';
     #[Rule('required')]
+    #[Rule('min:4', message: 'Yo, too short')]
+    #[Rule('max:100', message: 'Yo, too long')]
     public string $content = '';
 
     public function save(): void
