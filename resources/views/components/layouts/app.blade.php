@@ -26,10 +26,18 @@
                     Todo-list
                 </a>
             </li>
+            <li>
+                <a href="/show-posts"
+                   class="{{request()->is('show-posts') ? "bg-purple-300 text-purple-700": "" }} text-blue-700 hover:bg-purple-300 text-lg font-bold inline-block w-full px-2 py-1 rounded ">
+                    Show Posts
+                </a>
+            </li>
         </ul>
     </nav>
     <div class="flex-1">
-        {{ $slot }}
+        <div class="min-h-screen">
+            {{ $slot }}
+        </div>
     </div>
 </div>
 
