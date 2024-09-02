@@ -11,7 +11,7 @@
             </button>
         </form>
 
-        <ul class="px-5 mt-6">
+        <ul class="px-5 mt-6 max-h-48 overflow-y-auto">
             @foreach($todos as $todo)
                 <li class="my-2 capitalize list-decimal">{{$todo}}</li>
             @endforeach

@@ -20,6 +20,8 @@ class TodoList extends Component
             'clean the dishes',
             'run tests',
             'play video game',
+            'read a book',
+            'watch a movie',
         ];
     }
 
