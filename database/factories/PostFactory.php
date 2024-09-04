@@ -10,7 +10,6 @@ class PostFactory extends Factory
     {
         return [
             'title' => $this->faker->words(asText: true),
-
             'content' => $this->faker->text(99),
         ];
     }

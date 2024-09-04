@@ -9,4 +9,9 @@ class Post extends Model
 {
     protected $fillable = ['title', 'content'];
     use HasFactory;
+
+    public function archive(): void
+    {
+        $this->forceFill(['is_archived' => true])->save();
+    }
 }
