@@ -6,8 +6,10 @@ use App\Models\Post;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 use Livewire\Attributes\Rule;
+use Livewire\Attributes\Title;
 use Livewire\Component;
 
+#[Title('Create Post')]
 class CreatePost extends Component
 {
 
@@ -27,7 +29,7 @@ class CreatePost extends Component
             'content' => $this->content,
         ]);
 
-        $this->redirect('show-posts');
+        $this->redirect('show-posts', navigate: true);
     }
 
     public function render(): View
