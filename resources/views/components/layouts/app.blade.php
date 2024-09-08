@@ -47,16 +47,20 @@
             </ul>
         </div>
         <footer class="flex space-x-2">
-            @if(auth()->check())
-                <a wire:navigate href="#"
-                   class="text-lg px-4 py-2 bg-red-500 border  border-red-600 text-red-100 inline-block w-full rounded text-center">Logout</a>
-            @else
+            @auth
+                <form action="{{route('logout')}}" method="POST" class="flex-1">
+                    @csrf
+                    <button type="submit" class="text-lg px-4 py-2 bg-red-500 border border-red-600 text-red-100 w-full rounded text-center">Logout</button>
+                </form>
+            @endauth
+            @guest
                 <a wire:navigate href="/login"
                    class="text-lg px-4 py-2 bg-indigo-500 border  border-indigo-700 text-indigo-100 inline-block w-1/2 rounded text-center">Login</a>
                 <a href="#"
                    class="text-lg px-4 py-2 bg-gray-200  border border-gray-300 text-gray-800 inline-block  w-1/2 rounded text-center">Sing
                     up</a>
-            @endif
+            @endguest
+
         </footer>
     </nav>
     <div class="flex-1">
