@@ -45,6 +45,21 @@
                     </ul>
                 </li>
             </ul>
+            @auth
+                <ul class="mt-10">
+                    <li>
+                        <h5 class="text-lg font-bold text-purple-700 mb-1">Form Essentials</h5>
+                        <ul class="mx-2">
+                            <li>
+                                <a wire:navigate href="/edit-profile"
+                                   class="{{request()->is('edit-profile') ? "bg-purple-300 text-purple-700 font-bold" : "" }} text-blue-700 hover:bg-purple-300 inline-block w-full px-2 py-1 rounded">
+                                    Edit profile
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            @endauth
         </div>
         <footer class="flex space-x-2">
             @auth

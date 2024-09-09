@@ -3,6 +3,7 @@
 use App\Http\Controllers\LogoutController;
 use App\Livewire\Counter;
 use App\Livewire\CreatePost;
+use App\Livewire\EditProfile;
 use App\Livewire\LoginForm;
 use App\Livewire\ShowPosts;
 use App\Livewire\TodoList;
@@ -21,3 +22,7 @@ Route::get('create-post', CreatePost::class);
 // Login Route
 Route::get('login', LoginForm::class)->name('login');
 Route::middleware(['auth'])->post('logout', LogoutController::class)->name('logout');
+
+// Form Essentials
+
+Route::middleware(['auth'])->get('edit-profile', EditProfile::class)->name('edit-profile');
