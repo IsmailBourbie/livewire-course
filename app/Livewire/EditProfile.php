@@ -14,11 +14,15 @@ class EditProfile extends Component
     public string $username;
     public ?string $bio;
 
+    public bool $showSuccessIndicator = false;
+
     public function update(): void
     {
         $this->user->username = $this->username;
         $this->user->bio = $this->bio;
         $this->user->save();
+        sleep(1);
+        $this->showSuccessIndicator = true;
     }
 
     public function mount(): void
