@@ -10,19 +10,19 @@
         </p>
         <div class="p-16 bg-white rounded-lg shadow-xl">
             <h1 class="text-2xl mb-8 text-center font-bold">Update Your Profile..</h1>
-            <form action="" method="post" class="space-y-6" wire:submit.prevent="update">
+            <form action="" method="post" class="space-y-6" wire:submit.prevent="save">
                 <div>
                     <label for="username" class="block text-sm font-medium mb-2">Username</label>
                     <input type="text" id="username" name="title"
                            @class([
                                     'py-3 px-4 block w-full border rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500',
-                                    'border-slate-300' => $errors->missing('username'),
-                                    'border-red-500' => $errors->has('username'),
+                                    'border-slate-300' => $errors->missing('form.username'),
+                                    'border-red-500' => $errors->has('form.username'),
                                 ])
                            placeholder="Enter Username"
-                           wire:model.blur="username"
+                           wire:model.blur="form.username"
                     >
-                    @error('username')
+                    @error('form.username')
                     <em class="py-1 px-2 text-sm text-red-400 font-bold">{{ $message }}</em>
                     @enderror
                 </div>
@@ -31,15 +31,15 @@
                     <textarea id="bio"
                               @class([
                                     'py-3 px-4 block w-full border rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500',
-                                    'border-slate-300' => $errors->missing('bio'),
-                                    'border-red-500' => $errors->has('bio'),
+                                    'border-slate-300' => $errors->missing('form.bio'),
+                                    'border-red-500' => $errors->has('form.bio'),
                                 ])
                               name="Bio"
                               maxlength="200"
                               rows="4" placeholder="A little bit about yourself..."
-                              wire:model.blur="bio"
+                              wire:model.blur="form.bio"
                     ></textarea>
-                    @error('bio')
+                    @error('form.bio')
                     <em class="py-1 px-2 text-sm text-red-400 font-bold">{{ $message }}</em>
                     @enderror
 

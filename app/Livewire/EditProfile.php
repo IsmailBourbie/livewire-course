@@ -2,6 +2,7 @@
 
 namespace App\Livewire;
 
+use App\Livewire\Forms\ProfileForm;
 use App\Models\User;
 use Illuminate\Validation\Rule;
 use Illuminate\View\View;
@@ -12,43 +13,18 @@ use Livewire\Component;
 #[Title('Edit Profile')]
 class EditProfile extends Component
 {
-    public User $user;
-
-    #[Validate]
-    public string $username;
-
-    #[Validate('max:200')]
-    public ?string $bio;
-
+    public ProfileForm $form;
     public bool $showSuccessIndicator = false;
 
-    public function rules(): array
+    public function save(): void
     {
-        return [
-            'username' => [
-                'required',
-                'regex:/^[a-zA-Z0-9_]+$/',
-                Rule::unique('users', 'username')->ignore($this->user),
-            ]
-        ];
-    }
-
-    public function update(): void
-    {
-        $this->validate();
-
-        $this->user->username = $this->username;
-        $this->user->bio = $this->bio;
-        $this->user->save();
+        $this->form->update();
         $this->showSuccessIndicator = true;
     }
 
     public function mount(): void
     {
-        $this->user = auth()->user();
-        $this->username = $this->user->username;
-        $this->bio = $this->user->bio;
-
+        $this->form->setUser(auth()->user());
     }
 
     public function render(): View
