@@ -14,9 +14,13 @@
                 <div>
                     <label for="username" class="block text-sm font-medium mb-2">Username</label>
                     <input type="text" id="username" name="title"
-                           class="py-3 px-4 block w-full border border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500"
+                           @class([
+                                    'py-3 px-4 block w-full border rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500',
+                                    'border-slate-300' => $errors->missing('username'),
+                                    'border-red-500' => $errors->has('username'),
+                                ])
                            placeholder="Enter Username"
-                           wire:model="username"
+                           wire:model.blur="username"
                     >
                     @error('username')
                     <em class="py-1 px-2 text-sm text-red-400 font-bold">{{ $message }}</em>
@@ -25,11 +29,15 @@
                 <div>
                     <label for="bio" class="block text-sm font-medium mb-2">Bio</label>
                     <textarea id="bio"
-                              class="py-3 px-4 block w-full border border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500"
+                              @class([
+                                    'py-3 px-4 block w-full border rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500',
+                                    'border-slate-300' => $errors->missing('bio'),
+                                    'border-red-500' => $errors->has('bio'),
+                                ])
                               name="Bio"
-                              maxlength="100"
+                              maxlength="200"
                               rows="4" placeholder="A little bit about yourself..."
-                              wire:model="bio"
+                              wire:model.blur="bio"
                     ></textarea>
                     @error('bio')
                     <em class="py-1 px-2 text-sm text-red-400 font-bold">{{ $message }}</em>
@@ -40,7 +48,7 @@
                     <button type="submit"
                             class="relative w-full py-2 px-6 text-center text-sm font-medium rounded-lg border border-transparent bg-blue-400 text-blue-800 hover:bg-blue-300 focus:outline-none disabled:opacity-75 disabled:cursor-not-allowed">
                         Update
-                        <div wire:loading.flex class="flex items-center absolute top-0 right-0 bottom-0">
+                        <div wire:loading.flex wire:target="save" class="flex items-center absolute top-0 right-0 bottom-0">
                             <svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg"
                                  fill="none" viewBox="0 0 24 24">
                                 <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor"
