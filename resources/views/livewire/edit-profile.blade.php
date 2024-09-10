@@ -44,11 +44,33 @@
                     @enderror
 
                 </div>
+                <fieldset>
+                    <legend class="block text-sm font-medium mb-2">Receive Emails?</legend>
+                    <div class="flex items-center space-x-6">
+                        <div class="flex items-center">
+                            <input id="yes-receive-emails" type="radio" value="true" name="receive-emails"
+                                   class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300"
+                                   wire:model.boolean="form.receive_emails"
+                                @checked($form->receive_emails)
+                            >
+                            <label for="yes-receive-emails" class="ms-2 text-sm font-medium text-slate-400">Yes</label>
+                        </div>
+                        <div class="flex items-center">
+                            <input id="no-receive-emails" type="radio" value="false" name="receive-emails"
+                                   class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300"
+                                   wire:model.boolean="form.receive_emails"
+                                @checked(!$form->receive_emails)
+                            >
+                            <label for="no-receive-emails" class="ms-2 text-sm font-medium text-slate-400">No</label>
+                        </div>
+                    </div>
+                </fieldset>
                 <div class="w-full flex space-x-2">
                     <button type="submit"
                             class="relative w-full py-2 px-6 text-center text-sm font-medium rounded-lg border border-transparent bg-blue-400 text-blue-800 hover:bg-blue-300 focus:outline-none disabled:opacity-75 disabled:cursor-not-allowed">
                         Update
-                        <div wire:loading.flex wire:target="save" class="flex items-center absolute top-0 right-0 bottom-0">
+                        <div wire:loading.flex wire:target="save"
+                             class="flex items-center absolute top-0 right-0 bottom-0">
                             <svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg"
                                  fill="none" viewBox="0 0 24 24">
                                 <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor"

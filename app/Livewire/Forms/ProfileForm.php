@@ -17,11 +17,15 @@ class ProfileForm extends Form
     #[Validate('max:200')]
     public ?string $bio;
 
+    #[Validate('boolean')]
+    public bool $receive_emails;
+
     public function setUser(User $user): void
     {
         $this->user = $user;
         $this->username = $this->user->username;
         $this->bio = $this->user->bio;
+        $this->receive_emails = $this->user->receive_emails;
     }
     public function rules(): array
     {
@@ -40,6 +44,7 @@ class ProfileForm extends Form
 
         $this->user->username = $this->username;
         $this->user->bio = $this->bio;
+        $this->user->receive_emails = $this->receive_emails;
         $this->user->save();
     }
 
