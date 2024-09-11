@@ -15,10 +15,14 @@ class ProfileForm extends Form
     public string $username;
 
     #[Validate('max:200')]
-    public ?string $bio;
+    public ?string $bio = null;
 
     #[Validate('boolean')]
     public bool $receive_emails;
+    #[Validate('boolean')]
+    public bool $receive_updates;
+    #[Validate('boolean')]
+    public bool $receive_offers;
 
     public function setUser(User $user): void
     {
@@ -26,7 +30,10 @@ class ProfileForm extends Form
         $this->username = $this->user->username;
         $this->bio = $this->user->bio;
         $this->receive_emails = $this->user->receive_emails;
+        $this->receive_updates = $this->user->receive_updates;
+        $this->receive_offers = $this->user->receive_offers;
     }
+
     public function rules(): array
     {
         return [
@@ -43,8 +50,10 @@ class ProfileForm extends Form
         $this->validate();
 
         $this->user->username = $this->username;
-        $this->user->bio = $this->bio;
         $this->user->receive_emails = $this->receive_emails;
+        $this->user->receive_updates = $this->user->receive_emails ? $this->receive_updates : false;
+        $this->user->receive_offers = $this->user->receive_emails ? $this->receive_offers : false;
+
         $this->user->save();
     }
 

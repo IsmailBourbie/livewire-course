@@ -41,6 +41,8 @@ class User extends Authenticatable
     {
         return [
             'receive_emails' => 'boolean',
+            'receive_updates' => 'boolean',
+            'receive_offers' => 'boolean',
             'password' => 'hashed',
         ];
     }

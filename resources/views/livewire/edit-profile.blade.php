@@ -53,7 +53,7 @@
                                    wire:model.boolean="form.receive_emails"
                                 @checked($form->receive_emails)
                             >
-                            <label for="yes-receive-emails" class="ms-2 text-sm font-medium text-slate-400">Yes</label>
+                            <label for="yes-receive-emails" class="ms-2 text-sm font-medium text-slate-500">Yes</label>
                         </div>
                         <div class="flex items-center">
                             <input id="no-receive-emails" type="radio" value="false" name="receive-emails"
@@ -61,7 +61,28 @@
                                    wire:model.boolean="form.receive_emails"
                                 @checked(!$form->receive_emails)
                             >
-                            <label for="no-receive-emails" class="ms-2 text-sm font-medium text-slate-400">No</label>
+                            <label for="no-receive-emails" class="ms-2 text-sm font-medium text-slate-500">No</label>
+                        </div>
+                    </div>
+                </fieldset>
+                <fieldset x-show="$wire.form.receive_emails">
+                    <legend class="block text-sm font-medium mb-2">Receive Type</legend>
+                    <div class="flex flex-col space-y-1">
+                        <div class="flex items-center">
+                            <input id="general-updates" type="checkbox" name="receive_updates"
+                                   class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300"
+                                   wire:model="form.receive_updates"
+                            >
+                            <label for="general-updates" class="ms-2 text-sm font-medium text-slate-500">General
+                                Updates</label>
+                        </div>
+                        <div class="flex items-center">
+                            <input id="marketing-offers" type="checkbox" name="receive_offers"
+                                   class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300"
+                                   wire:model="form.receive_offers"
+                            >
+                            <label for="marketing-offers" class="ms-2 text-sm font-medium text-slate-500">Marketing
+                                Offers</label>
                         </div>
                     </div>
                 </fieldset>

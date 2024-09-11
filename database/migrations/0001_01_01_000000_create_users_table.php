@@ -16,6 +16,8 @@ return new class extends Migration {
             $table->string('password');
             $table->text('bio')->nullable();
             $table->boolean('receive_emails')->default(false);
+            $table->boolean('receive_updates')->default(false);
+            $table->boolean('receive_offers')->default(false);
             $table->rememberToken();
             $table->timestamps();
         });
