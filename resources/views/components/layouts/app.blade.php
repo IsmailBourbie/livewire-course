@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://unpkg.com/@tailwindcss/forms@0.4.0/dist/forms.min.css">
 
     <title>{{ $title ?? 'Page Title' }}</title>
 </head>
@@ -65,7 +66,10 @@
             @auth
                 <form action="{{route('logout')}}" method="POST" class="flex-1">
                     @csrf
-                    <button type="submit" class="text-lg px-4 py-2 bg-red-500 border border-red-600 text-red-100 w-full rounded text-center">Logout</button>
+                    <button type="submit"
+                            class="text-lg px-4 py-2 bg-red-500 border border-red-600 text-red-100 w-full rounded text-center">
+                        Logout
+                    </button>
                 </form>
             @endauth
             @guest

@@ -15,6 +15,7 @@ return new class extends Migration {
             $table->string('username')->unique();
             $table->string('password');
             $table->text('bio')->nullable();
+            $table->string('country');
             $table->boolean('receive_emails')->default(false);
             $table->boolean('receive_updates')->default(false);
             $table->boolean('receive_offers')->default(false);

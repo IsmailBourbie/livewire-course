@@ -17,6 +17,9 @@ class ProfileForm extends Form
     #[Validate('max:200')]
     public ?string $bio = null;
 
+    #[Validate('required')]
+    public string $country;
+
     #[Validate('boolean')]
     public bool $receive_emails;
     #[Validate('boolean')]
@@ -29,6 +32,7 @@ class ProfileForm extends Form
         $this->user = $user;
         $this->username = $this->user->username;
         $this->bio = $this->user->bio;
+        $this->country = $this->user->country;
         $this->receive_emails = $this->user->receive_emails;
         $this->receive_updates = $this->user->receive_updates;
         $this->receive_offers = $this->user->receive_offers;
@@ -51,6 +55,7 @@ class ProfileForm extends Form
 
         $this->user->username = $this->username;
         $this->user->bio = $this->bio;
+        $this->user->country = $this->country;
         $this->user->receive_emails = $this->receive_emails;
         $this->user->receive_updates = $this->user->receive_emails ? $this->receive_updates : false;
         $this->user->receive_offers = $this->user->receive_emails ? $this->receive_offers : false;
