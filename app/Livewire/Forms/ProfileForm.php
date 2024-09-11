@@ -50,6 +50,7 @@ class ProfileForm extends Form
         $this->validate();
 
         $this->user->username = $this->username;
+        $this->user->bio = $this->bio;
         $this->user->receive_emails = $this->receive_emails;
         $this->user->receive_updates = $this->user->receive_emails ? $this->receive_updates : false;
         $this->user->receive_offers = $this->user->receive_emails ? $this->receive_offers : false;
