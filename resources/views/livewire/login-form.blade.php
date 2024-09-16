@@ -24,7 +24,7 @@
             </div>
             <div>
                 <button type="submit"
-                        class="py-2 px-6 text-lg font-medium rounded-lg border w-full bg-indigo-500 border border-indigo-700 text-indigo-100 focus:outline-none focus:bg-teal-200">
+                        class="py-2 px-6 text-lg font-medium rounded-lg border w-full bg-indigo-500 border border-indigo-700 text-indigo-100 focus:outline-none">
                     Login
                 </button>
                 <p class="text-center mt-6 tracking-wide font-medium">Not a member? <a href="#" class="text-blue-500">Register now</a></p>

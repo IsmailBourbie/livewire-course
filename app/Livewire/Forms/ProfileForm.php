@@ -4,6 +4,7 @@ namespace App\Livewire\Forms;
 
 use App\Enums\Country;
 use App\Models\User;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Validation\Rule;
 use Livewire\Attributes\Validate;
 use Livewire\Form;
@@ -15,6 +16,9 @@ class ProfileForm extends Form
     #[Validate]
     public string $username;
 
+    #[Validate]
+    public string $password;
+
     #[Validate('max:200')]
     public ?string $bio = null;
 
@@ -22,11 +26,11 @@ class ProfileForm extends Form
     public Country $country;
 
     #[Validate('boolean')]
-    public bool $receive_emails;
+    public bool $receive_emails = false;
     #[Validate('boolean')]
-    public bool $receive_updates;
+    public bool $receive_updates = false;
     #[Validate('boolean')]
-    public bool $receive_offers;
+    public bool $receive_offers = false;
 
     public function setUser(User $user): void
     {
@@ -45,7 +49,7 @@ class ProfileForm extends Form
             'username' => [
                 'required',
                 'regex:/^[a-zA-Z0-9_]+$/',
-                Rule::unique('users', 'username')->ignore($this->user),
+                Rule::unique('users', 'username')->ignore($this->user ?? null),
             ]
         ];
     }
@@ -62,6 +66,23 @@ class ProfileForm extends Form
         $this->user->receive_offers = $this->user->receive_emails ? $this->receive_offers : false;
 
         $this->user->save();
+    }
+
+    public function store()
+    {
+        $this->addRulesFromOutside(['password' => ['required', 'min:8']]);
+        $this->validate();
+
+        $new_user = User::create([
+            'username' => $this->username,
+            'password' => $this->password,
+            'country' => $this->country,
+            'receive_emails' => $this->receive_emails,
+            'receive_updates' => $this->receive_updates,
+            'receive_offers' => $this->receive_offers,
+        ]);
+        auth()->login($new_user);
+        return redirect('edit-profile');
     }
 
 

@@ -75,7 +75,7 @@
             @guest
                 <a wire:navigate href="/login"
                    class="text-lg px-4 py-2 bg-indigo-500 border  border-indigo-700 text-indigo-100 inline-block w-1/2 rounded text-center">Login</a>
-                <a href="#"
+                <a href="{{ route('signup') }}"
                    class="text-lg px-4 py-2 bg-gray-200  border border-gray-300 text-gray-800 inline-block  w-1/2 rounded text-center">Sing
                     up</a>
             @endguest

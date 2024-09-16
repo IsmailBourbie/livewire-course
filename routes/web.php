@@ -6,6 +6,7 @@ use App\Livewire\CreatePost;
 use App\Livewire\EditProfile;
 use App\Livewire\LoginForm;
 use App\Livewire\ShowPosts;
+use App\Livewire\Signup;
 use App\Livewire\TodoList;
 use Illuminate\Auth\Events\Logout;
 use Illuminate\Support\Facades\Route;
@@ -26,3 +27,4 @@ Route::middleware(['auth'])->post('logout', LogoutController::class)->name('logo
 // Form Essentials
 
 Route::middleware(['auth'])->get('edit-profile', EditProfile::class)->name('edit-profile');
+Route::middleware(['guest'])->get('signup', Signup::class)->name('signup');
