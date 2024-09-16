@@ -1,5 +1,5 @@
 <div class="bg-blue-100 rounded min-h-screen flex items-center justify-center flex-col">
-    <div class="w-6/12 relative">
+    <div class="w-5/12 relative">
         <p
             x-cloak
             x-show="$wire.showSuccessIndicator"
@@ -12,7 +12,8 @@
             <h1 class="text-2xl mb-8 text-center font-bold">Update Your Profile..</h1>
             <form action="" method="post" class="space-y-6" wire:submit.prevent="save">
                 <div>
-                    <label for="username" class="block text-sm font-medium mb-2">Username <span class="text-red-400 font-bold">*</span></label>
+                    <label for="username" class="block text-sm font-medium mb-2">Username <span
+                            class="text-red-400 font-bold">*</span></label>
                     <input type="text" id="username" name="username"
                            @class([
                                     'py-3 px-4 block w-full border rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500',
@@ -45,7 +46,8 @@
 
                 </div>
                 <div>
-                    <label for="country" class="block text-sm font-medium mb-2">Country <span class="text-red-400 font-bold">*</span></label>
+                    <label for="country" class="block text-sm font-medium mb-2">Country <span
+                            class="text-red-400 font-bold">*</span></label>
                     <select id="country" name="country"
                             @class([
                                      'py-3 px-4 block w-full border rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500',
@@ -55,12 +57,9 @@
                             wire:model.blur="form.country"
                     >
                         <option value="" selected disabled>Choose your country</option>
-                        <option value="Algeria">Algeria</option>
-                        <option value="United Arab Emirates">United Arab Emirates</option>
-                        <option value="United Kingdom">United Kingdom</option>
-                        <option value="United States">United States</option>
-                        <option value="France">France</option>
-                        <option value="Saudi Arabia">Saudi Arabia</option>
+                        @foreach(\App\Enums\Country::cases() as $country)
+                            <option value="{{$country->value}}">{{$country->label()}}</option>
+                        @endforeach
                     </select>
                     @error('form.country')
                     <em class="py-1 px-2 text-sm text-red-400 font-bold">{{ $message }}</em>
@@ -108,9 +107,9 @@
                         </div>
                     </div>
                 </fieldset>
-                <div class="w-full flex space-x-2">
+                <div class="w-full">
                     <button type="submit"
-                            class="relative w-full py-2 px-6 text-center text-sm font-medium rounded-lg border border-transparent bg-blue-400 text-blue-800 hover:bg-blue-300 focus:outline-none disabled:opacity-75 disabled:cursor-not-allowed">
+                            class="relative w-full py-3 text-center text-sm font-medium rounded-lg border border-transparent bg-blue-400 text-blue-800 hover:bg-blue-300 focus:outline-none disabled:opacity-75 disabled:cursor-not-allowed">
                         Update
                         <div wire:loading.flex wire:target="save"
                              class="flex items-center absolute top-0 right-0 bottom-0">
@@ -122,10 +121,6 @@
                                       d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                             </svg>
                         </div>
-                    </button>
-                    <button type="reset"
-                            class="w-full py-2 px-6 text-center text-sm font-medium rounded-lg border border-transparent bg-red-300 text-red-800 hover:bg-red-200 focus:outline-none focus:bg-red-200 disabled:opacity-50 disabled:pointer-events-none">
-                        Reset
                     </button>
                 </div>
             </form>

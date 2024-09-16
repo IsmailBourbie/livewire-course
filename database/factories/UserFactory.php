@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Enums\Country;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
@@ -25,7 +26,7 @@ class UserFactory extends Factory
     {
         return [
             'username' => fake()->unique()->userName,
-            'country' => 'Algeria',
+            'country' => Country::Algeria,
             'password' => static::$password ??= Hash::make('password'),
             'remember_token' => Str::random(10),
         ];

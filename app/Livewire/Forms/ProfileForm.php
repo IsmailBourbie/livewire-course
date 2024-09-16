@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Forms;
 
+use App\Enums\Country;
 use App\Models\User;
 use Illuminate\Validation\Rule;
 use Livewire\Attributes\Validate;
@@ -18,7 +19,7 @@ class ProfileForm extends Form
     public ?string $bio = null;
 
     #[Validate('required')]
-    public string $country;
+    public Country $country;
 
     #[Validate('boolean')]
     public bool $receive_emails;
