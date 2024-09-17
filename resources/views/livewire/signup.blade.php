@@ -100,32 +100,55 @@
                             </div>
                         </div>
                     </fieldset>
-                    <div class="flex justify-content items-center">
-                        <div class="flex-1">
-                            <div class="flex items-center">
-                                <input id="terms-of-service" type="checkbox" name="terms_of_service"
-                                       class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-0"
-                                >
-                                <label for="terms-of-service" class="ms-2 text-sm font-medium text-slate-500">
-                                    I agree to the <button type="button" class="underline text-blue-500 hover:text-blue-600">terms of service.</button>
-                                </label>
-                            </div>
+                    <div class="flex justify-between items-center pt-4">
+                        <div class="flex justify-start items-center gap-2 text-sm">
+                            <input type="checkbox" class="border focus:ring-0">
+
+                            <span>I agree to the</span>
+
+                            <x-dialog wire:model="showModal">
+                                <x-dialog.open>
+                                    <button type="button" class="underline text-blue-500">
+                                        terms of service.
+                                    </button>
+                                </x-dialog.open>
+
+                                <x-dialog.panel>
+                                    <h2 class="text-2xl font-bold text-slate-900">Terms Of Service</h2>
+
+                                    <div class="mt-5 text-gray-600">
+                                        <h3 class="font-bold text-lg text-slate-800 mt-4">Acceptance of Terms</h3>
+                                        <p class="mt-2">By signing up for and using this sweet app, you agree to be bound by these Terms of Service ("Terms"). If you do not agree with these Terms, please do not use the Service.</p>
+
+                                        <h3 class="font-bold text-lg text-slate-800 mt-4">Changes to Terms</h3>
+                                        <p class="mt-2">We reserve the right to update and change the Terms at any time without notice. Continued use of the Service after any changes shall constitute your consent to such changes.</p>
+
+                                        <h3 class="font-bold text-lg text-slate-800 mt-4">Use of the Service</h3>
+                                        <p class="mt-2">You must provide accurate and complete registration information when you sign up. You are responsible for maintaining the confidentiality of your password and are solely responsible for all activities resulting from its use.</p>
+
+                                        <h3 class="font-bold text-lg text-slate-800 mt-4">User Content</h3>
+                                        <p class="mt-2">You are responsible for all content and data you provide or upload to the Service. We reserve the right to remove content deemed offensive, illegal, or in violation of these Terms or any other policy.</p>
+
+                                        <h3 class="font-bold text-lg text-slate-800 mt-4">Limitation of Liability</h3>
+                                        <p class="mt-2">The Service is provided "as is". We make no warranties, expressed or implied, and hereby disclaim all warranties, including without limitation, implied warranties of merchantability, fitness for a particular purpose, or non-infringement.</p>
+
+                                        <h3 class="font-bold text-lg text-slate-800 mt-4">Termination</h3>
+                                        <p class="mt-2">We reserve the right to suspend or terminate your account at any time for any reason, with or without notice.</p>
+
+                                        <h3 class="font-bold text-lg text-slate-800 mt-4">Governing Law</h3>
+                                        <p class="mt-2">These Terms shall be governed by the laws of the land of fairy tale creatures, without respect to its conflict of laws principles.</p>
+
+                                        <h3 class="font-bold text-lg text-slate-800 mt-4">Miscellaneous</h3>
+                                        <p class="mt-2">If any provision of these Terms is deemed invalid or unenforceable, the remaining provisions shall remain in effect.</p>
+
+                                        <h3 class="font-bold text-lg text-slate-800 mt-4">Contact</h3>
+                                        <p class="mt-2">For any questions regarding these Terms, please contact us at dontcontactus@ever.com.</p>
+                                    </div>
+                                </x-dialog.panel>
+                            </x-dialog>
                         </div>
-                        <button type="submit"
-                                class="relative px-6 py-3 text-center font-bold rounded-lg border border-transparent bg-blue-400 text-blue-800 hover:bg-blue-300 focus:outline-none disabled:opacity-75 disabled:cursor-not-allowed">
-                            Sign up
-                            <div wire:loading.flex wire:target="save"
-                                 class="flex items-center absolute top-0 right-0 bottom-0">
-                                <svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white"
-                                     xmlns="http://www.w3.org/2000/svg"
-                                     fill="none" viewBox="0 0 24 24">
-                                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor"
-                                            stroke-width="4"></circle>
-                                    <path class="opacity-75" fill="currentColor"
-                                          d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                                </svg>
-                            </div>
-                        </button>
+
+                        <button class="w-1/2 text-center rounded-xl bg-blue-500 text-white px-3 py-2 font-medium">Register</button>
                     </div>
                 </form>
             </div>
