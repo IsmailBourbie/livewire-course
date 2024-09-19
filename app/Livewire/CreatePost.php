@@ -12,6 +12,7 @@ use Livewire\Component;
 #[Title('Create Post')]
 class CreatePost extends Component
 {
+    public $classes = '';
 
     #[Rule('required', message: 'Yo, add a title')]
     #[Rule('min:4', message: 'Yo, too short')]

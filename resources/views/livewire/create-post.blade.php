@@ -1,11 +1,11 @@
-<div class="bg-blue-100 rounded min-h-screen flex items-center justify-center">
-    <div class="p-16 bg-white rounded-lg shadow-xl w-5/12">
+<div class="bg-blue-100 rounded min-h-screen flex items-center justify-center p-4 {{$classes}}">
+    <div class="p-16 bg-white rounded-lg shadow-xl w-10/12">
         <h1 class="text-2xl mb-8 text-center font-bold">New Post</h1>
         <form action="" method="post" class="space-y-6" wire:submit.prevent="save()">
             <div>
                 <label for="input-label" class="block text-sm font-medium mb-2">Title</label>
-                <input type="text" id="input-label" name="title"
-                       class="py-3 px-4 block w-full border border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500"
+                <input autofocus type="text" id="input-label" name="title"
+                       class="py-3 px-4 block w-full border border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 read-only:opacity-50 read-only:cursor-not-allowed"
                        placeholder="Enter Title"
                        wire:model="title">
                 @error('title')
@@ -15,7 +15,7 @@
             <div>
                 <label for="textarea-label" class="block text-sm font-medium mb-2">Content</label>
                 <textarea id="textarea-label"
-                          class="py-3 px-4 block w-full border border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500"
+                          class="py-3 px-4 block w-full border border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 read-only:opacity-50 read-only:cursor-not-allowed"
                           name="content"
                           maxlength="100"
                           rows="3" placeholder="Say hi..."
