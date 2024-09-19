@@ -1,7 +1,7 @@
 <div class="bg-blue-100 rounded min-h-screen flex items-center justify-center">
     <div class="p-16 bg-white rounded-lg shadow-xl w-8/12">
         <div class="flex justify-between items-center mb-8">
-            <h1 class="text-3xl font-bold mb-6">All Posts</h1>
+            <h1 class="text-3xl font-bold">All Posts</h1>
             <a wire:navigate href="/create-post" class="text-lg text-blue-100 border border-blue-600 bg-blue-500 px-2 py-1 rounded">New Post</a>
         </div>
         <div class="overflow-x-auto">
@@ -14,7 +14,7 @@
 
                 </tr>
                 </thead>
-                <tbody class="divide-y divide-blue-200 text-blue-gray-900">
+                <tbody class="divide-y divide-blue-200 text-blue-gray-900" wire:loading.class="opacity-50">
                 @foreach($posts as $post)
                     <livewire:post-row :key="$post->id" :post="$post"/>
 
