@@ -28,7 +28,7 @@
                 </thead>
                 <tbody class="divide-y divide-blue-200 text-blue-gray-900" wire:loading.class="opacity-50">
                 @foreach($posts as $post)
-                    <livewire:post-row :key="$post->id" :post="$post"/>
+                    <livewire:post-row :key="$post->id" :post="$post" @deleted="delete({{$post->id}})"/>
 
                 @endforeach
                 </tbody>

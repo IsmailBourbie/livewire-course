@@ -42,7 +42,7 @@
                             <x-dialog.close>
                                 <button :disabled="confirmation !== 'CONFIRM'"
                                         class="py-2 px-4 border border-red-600 bg-red-500 text-red-100 rounded min-w-28 disabled:cursor-not-allowed disabled:opacity-75"
-                                        wire:click="$parent.delete({{$post}})"
+                                        wire:click="dispatch('deleted')"
                                 >
                                     Confirm
                                 </button>
