@@ -22,7 +22,7 @@
                 </x-dialog.open>
                 <x-dialog.panel>
                     <div class="flex flex-col gap-6">
-                        <h1 class="text-3xl font-bold">Edit Profile</h1>
+                        <h1 class="text-3xl mb-8 font-bold">Edit Post</h1>
                         <form action="" method="post" class="space-y-6" wire:submit.prevent="save()">
                             <div>
                                 <label for="input-label" class="block text-sm font-medium mb-2">Title</label>
@@ -47,7 +47,7 @@
                                     <em class="py-1 px-2 text-sm text-red-400 font-bold">{{ $message }}</em>
                                     @enderror
                                     <small class="ml-auto text-gray-600 py-1 px-2">Characters: <span
-                                            x-text="$wire.content.length"></span>/100</small>
+                                            x-text="$wire.form.content.length"></span>/100</small>
                                 </div>
 
                             </div>
