@@ -15,10 +15,12 @@ class PostRow extends Component
     public Post $post;
 
     public bool $showEditDialog = false;
+    public bool $showMenu = false;
 
-    public function archive()
+    public function archive(): void
     {
         $this->post->archive();
+        $this->reset('showMenu');
     }
 
     public function mount(Post $post): void
