@@ -4,11 +4,11 @@
         <form action="" method="post" class="space-y-6" wire:submit.prevent="save()">
             <div>
                 <label for="input-label" class="block text-sm font-medium mb-2">Title</label>
-                <input autofocus type="text" id="input-label" name="title"
+                <input autofocus type="text" id="input-label" name="form.title"
                        class="py-3 px-4 block w-full border border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 read-only:opacity-50 read-only:cursor-not-allowed"
                        placeholder="Enter Title"
-                       wire:model="title">
-                @error('title')
+                       wire:model="form.title">
+                @error('form.title')
                 <em class="py-1 px-2 text-sm text-red-400 font-bold">{{ $message }}</em>
                 @enderror
             </div>
@@ -19,9 +19,9 @@
                           name="content"
                           maxlength="100"
                           rows="3" placeholder="Say hi..."
-                          wire:model="content"></textarea>
+                          wire:model="form.content"></textarea>
                 <div class="flex">
-                    @error('content')
+                    @error('form.content')
                     <em class="py-1 px-2 text-sm text-red-400 font-bold">{{ $message }}</em>
                     @enderror
                     <small class="ml-auto text-gray-600 py-1 px-2">Characters: <span

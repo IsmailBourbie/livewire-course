@@ -2,6 +2,7 @@
 
 namespace App\Livewire;
 
+use App\Livewire\Forms\PostForm;
 use App\Models\Post;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
@@ -12,24 +13,14 @@ use Livewire\Component;
 #[Title('Create Post')]
 class CreatePost extends Component
 {
+
+    public PostForm $form;
     public $classes = '';
 
-    #[Rule('required', message: 'Yo, add a title')]
-    #[Rule('min:4', message: 'Yo, too short')]
-    public string $title = '';
-    #[Rule('required')]
-    #[Rule('min:4', message: 'Yo, too short')]
-    #[Rule('max:100', message: 'Yo, too long')]
-    public string $content = '';
 
     public function save(): void
     {
-        $this->validate();
-        Post::query()->create([
-            'title' => $this->title,
-            'content' => $this->content,
-        ]);
-
+        $this->form->create();
         $this->redirect('show-posts', navigate: true);
     }
 
