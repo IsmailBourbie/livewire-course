@@ -10,6 +10,8 @@ use Livewire\Form;
 class PostForm extends Form
 {
 
+    public Post $post;
+
     #[Rule('required', message: 'Yo, add a title')]
     #[Rule('min:4', message: 'Yo, too short')]
     public string $title = '';
@@ -17,6 +19,13 @@ class PostForm extends Form
     #[Rule('min:4', message: 'Yo, too short')]
     #[Rule('max:100', message: 'Yo, too long')]
     public string $content = '';
+
+    public function setPost(Post $post): void
+    {
+        $this->post = $post;
+        $this->title = $this->post->title;
+        $this->content = $this->post->content;
+    }
 
     public function create(): void
     {
@@ -26,5 +35,13 @@ class PostForm extends Form
             'content' => $this->content,
         ]);
 
+    }
+
+    public function update(): void
+    {
+        $this->validate();
+        $this->post->title = $this->title;
+        $this->post->content = $this->content;
+        $this->post->save();
     }
 }
