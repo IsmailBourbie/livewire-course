@@ -1,5 +1,5 @@
-<div class="bg-blue-100 rounded min-h-screen flex items-center justify-center">
-    <div class="p-16 bg-white rounded-lg shadow-xl w-8/12">
+<div class="bg-blue-100 rounded min-h-screen flex items-center justify-center p-2">
+    <div class="p-4 md:p-16 bg-white rounded-lg shadow-xl w-full md:w-8/12">
         <div class="flex justify-between items-center mb-8">
             <h1 class="text-3xl font-bold">All Posts</h1>
             <x-dialog wire:model="showCreateDialog">
@@ -59,7 +59,7 @@
                 <thead>
                 <tr class="bg-blue-gray-100 text-gray-700">
                     <th class="py-3 px-4 text-left">Title</th>
-                    <th class="py-3 px-4 text-left">Content</th>
+                    <th class="py-3 px-4 text-left hidden md:table-cell">Content</th>
                     <th class="py-3 px-4 text-left"></th>
 
                 </tr>

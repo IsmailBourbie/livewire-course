@@ -1,6 +1,6 @@
 <tr @class(['bg-gray-200' => $post->is_archived])>
     <td class="py-3 px-4 capitalize">{{$post->title}}</td>
-    <td class="py-3 px-4">{{str($post->content)->words(8)}}</td>
+    <td class="py-3 px-4 hidden md:table-cell">{{str($post->content)->words(8)}}</td>
     <td>
 
         <x-menu wire:model="showMenu">

@@ -1,7 +1,7 @@
 <div class="relative">
     <div class="bg-blue-100 rounded min-h-screen flex items-center justify-center flex-col">
-        <div class="w-5/12">
-            <div class="p-16 bg-white rounded-lg shadow-xl">
+        <div class="w-full p-2 md:w-5/12">
+            <div class="p-4 md:p-16 bg-white rounded-lg shadow-xl">
                 <h1 class="text-3xl mb-8 text-center font-bold">Sign up</h1>
                 <form action="" method="post" class="space-y-6" wire:submit.prevent="save">
                     <div>
@@ -100,8 +100,8 @@
                             </div>
                         </div>
                     </fieldset>
-                    <div class="flex justify-between items-center pt-4">
-                        <div class="flex justify-start items-center gap-2 text-sm">
+                    <div class="flex md:justify-between md:items-center flex-col md:flex-row md:pt-4">
+                        <div class="flex justify-start items-center gap-2 text-sm mb-4">
                             <input type="checkbox" class="border focus:ring-0">
 
                             <span>I agree to the</span>
@@ -148,7 +148,7 @@
                             </x-dialog>
                         </div>
 
-                        <button class="w-1/2 text-center rounded-xl bg-blue-500 text-white px-3 py-2 font-medium">Register</button>
+                        <button class="w-full md:w-1/3 lg:w-1/2 text-center rounded-xl bg-blue-500 text-white px-3 py-2 font-medium">Register</button>
                     </div>
                 </form>
             </div>

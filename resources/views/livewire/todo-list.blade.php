@@ -1,5 +1,5 @@
 <div class="bg-green-100 rounded min-h-screen flex items-center justify-center">
-    <div class="p-16 bg-white rounded-lg shadow-xl w-2/5">
+    <div class="md:p-16 p-8 bg-white rounded-lg shadow-xl md:w-2/5">
         <h1 class="text-3xl font-bold mb-6">To Do list</h1>
         <form action="" wire:submit.prevent="add">
             <input type="text" name="item" aria-label="todo-item"

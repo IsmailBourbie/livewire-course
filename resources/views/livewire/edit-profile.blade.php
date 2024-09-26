@@ -29,8 +29,8 @@
         </div>
     </div>
     <div class="bg-blue-100 rounded min-h-screen flex items-center justify-center flex-col">
-        <div class="w-5/12">
-            <div class="p-16 bg-white rounded-lg shadow-xl">
+        <div class="p-2 w-full md:w-5/12">
+            <div class="p-4 md:p-16 bg-white rounded-lg shadow-xl">
                 <h1 class="text-2xl mb-8 text-center font-bold">Update Your Profile..</h1>
                 <form action="" method="post" class="space-y-6" wire:submit.prevent="save">
                     <div>

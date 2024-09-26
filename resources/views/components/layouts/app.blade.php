@@ -11,9 +11,9 @@
 </head>
 <body>
 <div class="min-h-screen flex">
-    <nav class="w-2/12 bg-purple-100 px-4 py-8 flex flex-col justify-between">
+    <nav class="hidden md:flex w-2/12 bg-purple-100 px-4 py-8  flex-col justify-between">
         <div>
-            <h2 class="text-3xl font-bold text-purple-600 mb-8">
+            <h2 class="text-2xl font-bold text-purple-600 mb-8">
                 <a href="/">Livewire Course</a>
             </h2>
             <ul class="mt-10">

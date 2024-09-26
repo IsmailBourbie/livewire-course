@@ -1,5 +1,5 @@
-<div class="bg-gray-100 rounded min-h-screen flex items-center justify-center">
-    <div class="p-12 bg-white rounded-lg shadow-xl w-4/12">
+<div class="bg-gray-100 rounded min-h-screen flex items-center justify-center p-2">
+    <div class="p-4 md:p-12 bg-white rounded-lg shadow-xl w-full md:w-4/12">
         <h1 class="text-3xl mb-8 text-center font-bold">Login</h1>
         <form action="" method="post" class="space-y-6" wire:submit.prevent="submit()">
             <div>
