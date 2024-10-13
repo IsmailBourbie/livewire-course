@@ -29,4 +29,6 @@ Route::middleware(['guest'])->get('signup', Signup::class)->name('signup');
 
 
 // Tables
-Route::get('/store/{store}/orders', Page::class)->name('store.orders.index');
+Route::get('/store/{store}/orders', Page::class)
+    ->middleware(['can:view,store'])
+    ->name('store.orders.index');

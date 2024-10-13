@@ -5,6 +5,7 @@ namespace App\Models;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use App\Enums\Country;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
@@ -43,5 +44,10 @@ class User extends Authenticatable
             'password' => 'hashed',
             'country' => Country::class,
         ];
+    }
+
+    public function store(): HasOne
+    {
+        return $this->hasOne(Store::class);
     }
 }

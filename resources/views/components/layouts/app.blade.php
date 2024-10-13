@@ -55,6 +55,19 @@
                         </ul>
                     </li>
                 </ul>
+                <ul class="mt-10">
+                    <li>
+                        <h5 class="text-lg font-bold text-purple-700 mb-1">Data Tables</h5>
+                        <ul class="mx-2">
+                            <li>
+                                <a wire:navigate href="/store/{{auth()->user()->store->id}}/orders"
+                                   class="{{request()->is('store/*/orders') ? "bg-purple-300 text-purple-700 font-bold" : "" }} text-blue-700 hover:bg-purple-300 inline-block w-full px-2 py-1 rounded">
+                                    My Orders
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
             @endauth
         </div>
         <footer class="flex space-x-2">

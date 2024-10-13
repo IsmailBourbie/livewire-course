@@ -18,7 +18,6 @@ class ProductFactory extends Factory
     public function definition(): array
     {
         return [
-            'store_id' => Store::factory()->create(),
             'name' => $this->faker->name(),
         ];
     }
