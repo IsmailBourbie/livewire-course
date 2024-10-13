@@ -1,4 +1,4 @@
-<div class="bg-blue-100 rounded min-h-screen flex justify-center px-2 py-8">
+<div class="bg-emerald-50 rounded min-h-screen flex justify-center px-2 py-8">
     <div class="flex flex-col">
         <div class="-m-1.5 overflow-x-auto bg-white p-8">
             <div class="p-1.5 min-w-full inline-block align-middle">
@@ -48,6 +48,13 @@
                         @endforeach
                         </tbody>
                     </table>
+
+                    <div class="pt-4 flex items-center justify-between">
+                        <div class="text-slate-600 text-sm">
+                            Results: {{Number::format($orders->total())}}
+                        </div>
+                        {{$orders->links('livewire.order.index.pagination')}}
+                    </div>
                 </div>
             </div>
         </div>

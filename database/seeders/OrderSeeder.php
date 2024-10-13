@@ -19,10 +19,10 @@ class OrderSeeder extends Seeder
         $user = User::query()->firstOrFail();
         $storeOne = Store::factory()->createOne(['user_id' => $user]);
         $products = Product::factory(4)->create(['store_id' => $storeOne]);
-        Order::factory(40)->create(['store_id' => $storeOne, 'product_id' => $products->random()]);
+        Order::factory(1995)->create(['store_id' => $storeOne, 'product_id' => $products->random()]);
 
         $storeTwo = Store::factory()->createOne();
         $products = Product::factory()->count(4)->create(['store_id' => $storeTwo]);
-        Order::factory(40)->create(['store_id' => $storeTwo, 'product_id' => $products->random()]);
+        Order::factory(10)->create(['store_id' => $storeTwo, 'product_id' => $products->random()]);
     }
 }
