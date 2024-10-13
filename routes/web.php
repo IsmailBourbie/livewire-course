@@ -4,6 +4,7 @@ use App\Http\Controllers\LogoutController;
 use App\Livewire\Counter;
 use App\Livewire\EditProfile;
 use App\Livewire\LoginForm;
+use App\Livewire\Order\Index\Page;
 use App\Livewire\ShowPosts;
 use App\Livewire\Signup;
 use App\Livewire\TodoList;
@@ -25,3 +26,7 @@ Route::middleware(['auth'])->post('logout', LogoutController::class)->name('logo
 
 Route::middleware(['auth'])->get('edit-profile', EditProfile::class)->name('edit-profile');
 Route::middleware(['guest'])->get('signup', Signup::class)->name('signup');
+
+
+// Tables
+Route::get('store/1/orders', Page::class)->name('store.orders.index');
