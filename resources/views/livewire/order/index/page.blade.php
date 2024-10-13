@@ -24,22 +24,28 @@
                         </tr>
                         </thead>
                         <tbody class="divide-y divide-gray-200">
-                        <tr>
-                            <td class="px-6 py-4 whitespace-nowrap text-gray-800 font-medium"><span class="text-slate-300">#</span> 12345</td>
-                            <td class="px-6 py-4 whitespace-nowrap text-gray-800">
-                                <span class="px-2 py-px text-sm bg-green-100 text-green-500 font-medium rounded-full flex items-center">
-                                    Paid <x-icons.check />
-                                </span>
-                            </td>
-                            <td class="px-6 py-4 whitespace-nowrap text-gray-800">
-                                <div class="flex items-center space-x-1">
-                                    <img src="https://i.pravatar.cc/300" alt="avatar" class="size-6 rounded-full">
-                                    <span>bourbieismail@gmail.com</span>
-                                </div>
-                            </td>
-                            <td class="px-6 py-4 whitespace-nowrap text-gray-800">Aug 26, 10:30 AM</td>
-                            <td class="px-6 py-4 whitespace-nowrap text-gray-800 font-medium">$456.78</td>
-                        </tr>
+                        @foreach($orders as $order)
+                            <tr wire:key="{{$order->id}}">
+                                <td class="px-6 py-4 whitespace-nowrap text-gray-800 font-medium"><span
+                                        class="text-slate-300">#</span> {{$order->number}}
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap text-gray-800">
+                                    <div
+                                        class="px-2 py-px text-sm bg-{{$order->status->color()}}-100 text-{{$order->status->color()}}-500 font-medium rounded-full space-x-1 inline-flex items-center">
+                                        <div>{{$order->status->label()}}</div>
+                                        <x-dynamic-component :component="$order->status->icon()"/>
+                                    </div>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap text-gray-800">
+                                    <div class="flex items-center space-x-1">
+                                        <img src="{{$order->avatar}}" alt="avatar" class="size-6 rounded-full">
+                                        <span>{{$order->email}}</span>
+                                    </div>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap text-gray-800">{{$order->dateForHumans()}}</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-gray-800 font-medium">{{$order->amountForHumans()}}</td>
+                            </tr>
+                        @endforeach
                         </tbody>
                     </table>
                 </div>
