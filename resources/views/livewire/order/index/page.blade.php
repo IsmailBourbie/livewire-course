@@ -2,7 +2,7 @@
     <div class="flex flex-col">
         <div class="-m-1.5 overflow-x-auto bg-white p-8">
             <div class="p-1.5 min-w-full inline-block align-middle">
-                <div class="overflow-hidden">
+                <div class="relative overflow-hidden">
                     <table class="min-w-full divide-y divide-gray-200">
                         <thead>
                         <tr>
@@ -49,12 +49,16 @@
                         </tbody>
                     </table>
 
-                    <div class="pt-4 flex items-center justify-between">
-                        <div class="text-slate-600 text-sm">
-                            Results: {{Number::format($orders->total())}}
-                        </div>
-                        {{$orders->links('livewire.order.index.pagination')}}
+                    <div class="absolute inset-0 bg-white opacity-80" wire:loading></div>
+                    <div class="flex items-center justify-center absolute inset-0" wire:loading.flex>
+                        <x-icons.spinner size="10"/>
                     </div>
+                </div>
+                <div class="pt-4 flex items-center justify-between">
+                    <div class="text-slate-600 text-sm">
+                        Results: {{Number::format($orders->total())}}
+                    </div>
+                    {{$orders->links('livewire.order.index.pagination')}}
                 </div>
             </div>
         </div>
