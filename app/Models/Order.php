@@ -58,9 +58,17 @@ class Order extends Model
         $this->save();
     }
 
-    public function scopeSearch(Builder $builder, $query)
+    public function scopeSearch(Builder $query, $search)
     {
-        return $builder->whereLike('email', "%$query%")
-            ->orWhereLike('number', "%$query%");
+        return $query->whereLike('email', "%$search%")
+            ->orWhereLike('number', "%$search%");
+    }
+
+    public function scopeSort(Builder $query, string $sortColumn, string $sortDirection = 'asc'): Builder
+    {
+        if (empty($sortColumn)) {
+            return $query;
+        }
+        return $query->orderBy($sortColumn, $sortDirection);
     }
 }

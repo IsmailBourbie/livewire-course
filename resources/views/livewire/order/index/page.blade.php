@@ -13,7 +13,7 @@
                 >
             </div>
             {{-- Search Input --}}
-            
+
             {{-- Orders Table --}}
             <div class="p-1.5 min-w-full inline-block align-middle">
                 <div class="relative overflow-hidden">
@@ -21,19 +21,27 @@
                         <thead>
                         <tr>
                             <th scope="col" class="px-6 py-3 text-start font-bold text-gray-500">
-                                Order #
+                                <x-order.index.sortable column="number" :sort-column="$sortColumn" :sort-asc="$sortAsc">
+                                    <div>Order #</div>
+                                </x-order.index.sortable>
                             </th>
                             <th scope="col" class="px-6 py-3 text-start font-bold text-gray-500">
-                                Status
+                                <x-order.index.sortable column="status" :sort-column="$sortColumn" :sort-asc="$sortAsc">
+                                    <div>Status</div>
+                                </x-order.index.sortable>
                             </th>
                             <th scope="col" class="px-6 py-3 text-start font-bold text-gray-500">
                                 Customer
                             </th>
                             <th scope="col" class="px-6 py-3 text-start font-bold text-gray-500">
-                                Date
+                                <x-order.index.sortable column="date" :sort-column="$sortColumn" :sort-asc="$sortAsc">
+                                    <div>Date</div>
+                                </x-order.index.sortable>
                             </th>
-                            <th scope="col" class="px-6 py-3 text-start font-bold text-gray-500">
-                                Amount
+                            <th scope="col" class="px-6 py-3 text-end font-bold text-gray-500">
+                                <x-order.index.sortable class="flex-row-reverse" column="amount" :sort-column="$sortColumn" :sort-asc="$sortAsc">
+                                    <div>Amount</div>
+                                </x-order.index.sortable>
                             </th>
                         </tr>
                         </thead>
@@ -57,7 +65,7 @@
                                     </div>
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap text-gray-800">{{$order->dateForHumans()}}</td>
-                                <td class="px-6 py-4 whitespace-nowrap text-gray-800 font-medium">{{$order->amountForHumans()}}</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-end text-gray-800 font-medium">{{$order->amountForHumans()}}</td>
                             </tr>
                         @endforeach
                         </tbody>
