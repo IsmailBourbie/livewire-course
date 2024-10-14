@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Enums\Status;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Number;
@@ -28,7 +29,7 @@ class Order extends Model
 
     public function getAvatarAttribute()
     {
-        return 'https://i.pravatar.cc/300?img='.((string) crc32($this->email))[0];
+        return 'https://i.pravatar.cc/300?img=' . ((string)crc32($this->email))[0];
     }
 
     public function dateForHumans()
@@ -55,5 +56,11 @@ class Order extends Model
         $this->status = 'refunded';
 
         $this->save();
+    }
+
+    public function scopeSearch(Builder $builder, $query)
+    {
+        return $builder->whereLike('email', "%$query%")
+            ->orWhereLike('number', "%$query%");
     }
 }
