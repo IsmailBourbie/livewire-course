@@ -18,6 +18,8 @@ class Page extends Component
     public Store $store;
 
     public array $selectedOrdersIds = [];
+
+    public array $ordersIdsPerPage = [];
     public string $query = '';
     #[Url]
     public string $sortColumn = '';
@@ -25,7 +27,7 @@ class Page extends Component
     public bool $sortAsc = false;
 
 
-    public function updated(): void
+    public function updatedQuery(): void
     {
         $this->resetPage();
     }
@@ -95,6 +97,8 @@ class Page extends Component
             ->search($this->query)
             ->sort($this->validSortKey(), $this->sortAsc ? 'asc' : 'desc')
             ->paginate(10);
+
+        $this->ordersIdsPerPage = $orders->pluck('id')->toArray();
 
         return view('livewire.order.index.page', [
             'orders' => $orders,

@@ -37,7 +37,11 @@
                     <table class="min-w-full divide-y divide-gray-200">
                         <thead>
                         <tr>
-                            <th></th>
+                            <th class="whitespace-nowrap p-3 text-sm">
+                                <div class="flex items-center">
+                                    <x-order.index.check-all/>
+                                </div>
+                            </th>
                             <th scope="col" class="px-6 py-3 text-start font-bold text-gray-500">
                                 <x-order.index.sortable column="number" :sort-column="$sortColumn" :sort-asc="$sortAsc">
                                     <div>Order #</div>
