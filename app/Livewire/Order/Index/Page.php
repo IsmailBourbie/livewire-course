@@ -16,6 +16,8 @@ class Page extends Component
     use WithPagination;
 
     public Store $store;
+
+    public array $selectedOrdersIds = [];
     public string $query = '';
     #[Url]
     public string $sortColumn = '';
@@ -38,10 +40,30 @@ class Page extends Component
         $this->sortAsc = false;
     }
 
+    public function refundSelected(): void
+    {
+        $orders = $this->store->orders()->whereIn('id', $this->selectedOrdersIds)->get();
+
+        foreach ($orders as $order) {
+            $this->refund($order);
+        }
+
+        $this->reset('selectedOrdersIds');
+    }
+
     public function refund(Order $order): void
     {
         $this->authorize('update', $order);
         $order->refund();
+    }
+
+    public function archiveSelected(): void
+    {
+        $orders = $this->store->orders()->whereIn('id', $this->selectedOrdersIds)->get();
+
+        foreach ($orders as $order) {
+            $this->archive($order);
+        }
     }
 
     public function archive(Order $order): void

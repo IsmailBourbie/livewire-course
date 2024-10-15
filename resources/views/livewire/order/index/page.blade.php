@@ -14,16 +14,20 @@
                     >
                 </div>
 
-                <form wire:submit="export">
-                    <button type="submit"
-                            class="flex items-center rounded-lg px-3 py-1.5 border border-slate-300 hover:bg-slate-50">
-                        <div class="mr-1">
-                            <x-icons.arrow-down-tray wire:loading.remove wire:target="export"/>
-                            <x-icons.spinner wire:loading wire:target="export"/>
-                        </div>
-                        Export
-                    </button>
-                </form>
+
+                <div class="flex space-x-2">
+                    <x-order.index.bulk-actions />
+                    <form wire:submit="export">
+                        <button type="submit"
+                                class="flex items-center gap-2 rounded-lg border px-3 py-1.5 bg-white font-medium text-sm text-gray-700 hover:bg-gray-200">
+                            <div class="mr-1">
+                                <x-icons.arrow-down-tray wire:loading.remove wire:target="export"/>
+                                <x-icons.spinner wire:loading wire:target="export"/>
+                            </div>
+                            Export
+                        </button>
+                    </form>
+                </div>
             </div>
             {{-- Search Input --}}
 
@@ -33,6 +37,7 @@
                     <table class="min-w-full divide-y divide-gray-200">
                         <thead>
                         <tr>
+                            <th></th>
                             <th scope="col" class="px-6 py-3 text-start font-bold text-gray-500">
                                 <x-order.index.sortable column="number" :sort-column="$sortColumn" :sort-asc="$sortAsc">
                                     <div>Order #</div>
@@ -62,6 +67,11 @@
                         <tbody class="divide-y divide-gray-200">
                         @foreach($orders as $order)
                             <tr wire:key="{{$order->id}}">
+                                <td class="whitespace-nowrap p-3 text-sm">
+                                    <div class="flex items-center">
+                                        <input wire:model="selectedOrdersIds" value="{{$order->id}}" type="checkbox" class="rounded border-gray-300 shadow">
+                                    </div>
+                                </td>
                                 <td class="px-6 py-4 whitespace-nowrap text-gray-800 font-medium"><span
                                         class="text-slate-300">#</span> {{$order->number}}
                                 </td>
