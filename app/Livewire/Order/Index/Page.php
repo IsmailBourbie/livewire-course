@@ -5,9 +5,11 @@ namespace App\Livewire\Order\Index;
 use App\Models\Order;
 use App\Models\Store;
 use Illuminate\View\View;
+use Livewire\Attributes\Renderless;
 use Livewire\Attributes\Url;
 use Livewire\Component;
 use Livewire\WithPagination;
+use Symfony\Component\HttpFoundation\StreamedResponse;
 
 class Page extends Component
 {
@@ -46,6 +48,12 @@ class Page extends Component
     {
         $this->authorize('update', $order);
         $order->archive();
+    }
+
+    #[Renderless]
+    public function export(): StreamedResponse
+    {
+        return $this->store->orders()->toCsv('orders.csv');
     }
 
     public function validSortKey(): string

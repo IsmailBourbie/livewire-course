@@ -3,14 +3,16 @@
 namespace App\Models;
 
 use App\Enums\Status;
+use App\Traits\Exportable;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Number;
+use Symfony\Component\HttpFoundation\StreamedResponse;
 
 class Order extends Model
 {
-    use HasFactory;
+    use HasFactory, Exportable;
 
     protected $casts = [
         'status' => Status::class,

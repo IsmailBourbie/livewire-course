@@ -2,15 +2,28 @@
     <div class="flex flex-col">
         <div class="-m-1.5 overflow-x-auto space-y-4 bg-white p-8">
             {{-- Search Input --}}
-            <div class="relative w-1/2 mt-2 rounded-md">
-                <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
-                    <x-icons.magnifying-glass/>
+            <div class="flex justify-between items-center">
+                <div class="relative w-1/2 mt-2 rounded-md">
+                    <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+                        <x-icons.magnifying-glass/>
+                    </div>
+                    <input type="text" name="search" id="search"
+                           class="block w-full rounded-md border-0 py-1.5 pl-10 pr-3 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                           placeholder="Search email or order #"
+                           wire:model.live.debounce.500ms="query"
+                    >
                 </div>
-                <input type="text" name="search" id="search"
-                       class="block w-full rounded-md border-0 py-1.5 pl-10 pr-3 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                       placeholder="Search email or order #"
-                       wire:model.live.debounce.500ms="query"
-                >
+
+                <form wire:submit="export">
+                    <button type="submit"
+                            class="flex items-center rounded-lg px-3 py-1.5 border border-slate-300 hover:bg-slate-50">
+                        <div class="mr-1">
+                            <x-icons.arrow-down-tray wire:loading.remove wire:target="export"/>
+                            <x-icons.spinner wire:loading wire:target="export"/>
+                        </div>
+                        Export
+                    </button>
+                </form>
             </div>
             {{-- Search Input --}}
 
@@ -95,8 +108,8 @@
                         </tbody>
                     </table>
 
-                    <div class="absolute inset-0 bg-white opacity-80" wire:loading></div>
-                    <div class="flex items-center justify-center absolute inset-0" wire:loading.flex>
+                    <div class="absolute inset-0 bg-white opacity-80" wire:loading wire:target.except="export"></div>
+                    <div class="flex items-center justify-center absolute inset-0" wire:loading.flex wire:target.except="export">
                         <x-icons.spinner size="10"/>
                     </div>
                 </div>
