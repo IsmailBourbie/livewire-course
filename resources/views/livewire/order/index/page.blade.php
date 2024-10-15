@@ -39,7 +39,8 @@
                                 </x-order.index.sortable>
                             </th>
                             <th scope="col" class="px-6 py-3 text-end font-bold text-gray-500">
-                                <x-order.index.sortable class="flex-row-reverse" column="amount" :sort-column="$sortColumn" :sort-asc="$sortAsc">
+                                <x-order.index.sortable class="flex-row-reverse" column="amount"
+                                                        :sort-column="$sortColumn" :sort-asc="$sortAsc">
                                     <div>Amount</div>
                                 </x-order.index.sortable>
                             </th>
@@ -66,6 +67,29 @@
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap text-gray-800">{{$order->dateForHumans()}}</td>
                                 <td class="px-6 py-4 whitespace-nowrap text-end text-gray-800 font-medium">{{$order->amountForHumans()}}</td>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <x-menu>
+                                        <x-menu.button class="rounded hover:bg-slate-100">
+                                            <x-icons.ellipsis-horizontal/>
+                                        </x-menu.button>
+                                        <x-menu.items>
+                                            <x-menu.close>
+                                                <x-menu.item wire:confirm="Are you sure you want to refund this?"
+                                                             wire:click="refund({{$order->id}})">
+                                                    <x-icons.arrow-uturn-left/>
+                                                    Refund
+                                                </x-menu.item>
+                                            </x-menu.close>
+                                            <x-menu.close>
+                                                <x-menu.item wire:confirm="Are you sure you want to archive this?"
+                                                             wire:click="archive({{$order->id}})">
+                                                    <x-icons.archive-box/>
+                                                    Archive
+                                                </x-menu.item>
+                                            </x-menu.close>
+                                        </x-menu.items>
+                                    </x-menu>
+                                </td>
                             </tr>
                         @endforeach
                         </tbody>

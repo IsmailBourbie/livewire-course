@@ -36,6 +36,18 @@ class Page extends Component
         $this->sortAsc = false;
     }
 
+    public function refund(Order $order): void
+    {
+        $this->authorize('update', $order);
+        $order->refund();
+    }
+
+    public function archive(Order $order): void
+    {
+        $this->authorize('update', $order);
+        $order->archive();
+    }
+
     public function validSortKey(): string
     {
         return match ($this->sortColumn) {
