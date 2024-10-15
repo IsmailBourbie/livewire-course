@@ -96,9 +96,9 @@ class Page extends Component
         $orders = $this->store->orders()
             ->search($this->query)
             ->sort($this->validSortKey(), $this->sortAsc ? 'asc' : 'desc')
-            ->paginate(10);
+            ->paginate(5);
 
-        $this->ordersIdsPerPage = $orders->pluck('id')->toArray();
+        $this->ordersIdsPerPage = $this->orderIdsOnPage = $orders->map(fn ($order) => (string) $order->id)->toArray();
 
         return view('livewire.order.index.page', [
             'orders' => $orders,
