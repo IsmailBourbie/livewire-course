@@ -11,10 +11,11 @@ class Chart extends Component
 {
     public Store $store;
     public array $dataset = [];
+    public bool $filtered = false;
 
-    public function mount()
+    public function filter(): void
     {
-        $this->fillDataset();
+        $this->filtered = true;
     }
 
     protected function fillDataset(): void
@@ -24,13 +25,26 @@ class Chart extends Component
                 DB::raw("DATE_FORMAT(ordered_at, '%Y-%m') as increment"),
                 DB::raw("SUM(amount) as total"),
             )
-            ->groupBy('increment')->get();
+            ->tap(function ($query) {
+                if ($this->filtered) {
+                    $query->whereBetween('ordered_at', [now()->subMonths(7), now()]);
+                }
+            })
+            ->groupBy('increment')
+            ->get();
         $this->dataset['values'] = $results->pluck('total')->toArray();
         $this->dataset['labels'] = $results->pluck('increment')->toArray();
     }
 
     public function render(): View
     {
+        $this->fillDataset();
+
         return view('livewire.order.index.chart');
+    }
+
+    public function placeholder(): View
+    {
+        return view('livewire.order.index.chart-placeholder');
     }
 }
