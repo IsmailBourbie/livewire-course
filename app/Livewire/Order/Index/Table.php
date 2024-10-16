@@ -8,7 +8,6 @@ use App\Livewire\Traits\Sortable;
 use App\Models\Order;
 use App\Models\Store;
 use Illuminate\View\View;
-use Livewire\Attributes\Lazy;
 use Livewire\Attributes\Reactive;
 use Livewire\Attributes\Renderless;
 use Livewire\Component;
