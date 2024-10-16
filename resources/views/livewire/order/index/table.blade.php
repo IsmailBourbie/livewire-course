@@ -93,7 +93,7 @@
             <div class="absolute inset-0 bg-white opacity-80" wire:loading wire:target.except="export"></div>
             <div class="flex items-center justify-center absolute inset-0" wire:loading.flex
                  wire:target.except="export">
-                <x-icons.spinner size="10"/>
+                <x-icons.spinner class="size-10"/>
             </div>
         </div>
         <div class="pt-4 flex items-center justify-between">

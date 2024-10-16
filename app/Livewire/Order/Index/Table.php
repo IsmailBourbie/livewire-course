@@ -2,12 +2,14 @@
 
 namespace App\Livewire\Order\Index;
 
+use App\Livewire\Order\Index\Forms\Filters;
 use App\Livewire\Traits\Searchable;
 use App\Livewire\Traits\Sortable;
 use App\Models\Order;
 use App\Models\Store;
 use Illuminate\View\View;
 use Livewire\Attributes\Lazy;
+use Livewire\Attributes\Reactive;
 use Livewire\Attributes\Renderless;
 use Livewire\Component;
 use Livewire\WithPagination;
@@ -18,6 +20,8 @@ class Table extends Component
     use WithPagination, Sortable, Searchable;
 
     public Store $store;
+    #[Reactive]
+    public Filters $filters;
     public array $selectedOrdersIds = [];
     public array $ordersIdsPerPage = [];
 
@@ -62,6 +66,11 @@ class Table extends Component
     public function render(): View
     {
         $orders = $this->store->orders()
+            ->tap(function ($query) {
+                if (true) {
+                    $this->filters->apply($query);
+                }
+            })
             ->search($this->query)
             ->sort($this->getSortKey(), $this->getSortAsc())
             ->paginate(5);

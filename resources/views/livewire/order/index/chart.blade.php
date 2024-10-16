@@ -1,6 +1,5 @@
 <div>
-    <button wire:click="filter">Filter</button>
-    <div x-data="chart" class="relative h-[10rem] w-full" wire:ignore>
+    <div x-data="chart" class="relative h-[10rem] w-full" wire:ignore wire:loading.class="opacity-50">
         <canvas class="w-full"></canvas>
     </div>
 </div>

@@ -2,21 +2,19 @@
 
 namespace App\Livewire\Order\Index;
 
+use App\Livewire\Order\Index\Forms\Filters;
 use App\Models\Store;
 use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
+use Livewire\Attributes\Reactive;
 use Livewire\Component;
 
 class Chart extends Component
 {
     public Store $store;
+    #[Reactive]
+    public Filters $filters;
     public array $dataset = [];
-    public bool $filtered = false;
-
-    public function filter(): void
-    {
-        $this->filtered = true;
-    }
 
     protected function fillDataset(): void
     {
@@ -26,8 +24,8 @@ class Chart extends Component
                 DB::raw("SUM(amount) as total"),
             )
             ->tap(function ($query) {
-                if ($this->filtered) {
-                    $query->whereBetween('ordered_at', [now()->subMonths(7), now()]);
+                if (true) {
+                    $this->filters->apply($query);
                 }
             })
             ->groupBy('increment')
