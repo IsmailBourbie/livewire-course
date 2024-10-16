@@ -2,106 +2,23 @@
 
 namespace App\Livewire\Order\Index;
 
+use App\Livewire\Traits\Searchable;
+use App\Livewire\Traits\Sortable;
 use App\Models\Order;
 use App\Models\Store;
 use Illuminate\View\View;
+use Livewire\Attributes\Lazy;
 use Livewire\Attributes\Renderless;
-use Livewire\Attributes\Url;
 use Livewire\Component;
 use Livewire\WithPagination;
 use Symfony\Component\HttpFoundation\StreamedResponse;
 
+#[Lazy]
 class Page extends Component
 {
-    use WithPagination;
-
     public Store $store;
-
-    public array $selectedOrdersIds = [];
-
-    public array $ordersIdsPerPage = [];
-    public string $query = '';
-    #[Url]
-    public string $sortColumn = '';
-    #[Url]
-    public bool $sortAsc = false;
-
-
-    public function updatedQuery(): void
-    {
-        $this->resetPage();
-    }
-
-    public function setSortKey(string $column): void
-    {
-        if ($column === $this->sortColumn) {
-            $this->sortAsc = !$this->sortAsc;
-            return;
-        }
-        $this->sortColumn = $column;
-        $this->sortAsc = false;
-    }
-
-    public function refundSelected(): void
-    {
-        $orders = $this->store->orders()->whereIn('id', $this->selectedOrdersIds)->get();
-
-        foreach ($orders as $order) {
-            $this->refund($order);
-        }
-
-        $this->reset('selectedOrdersIds');
-    }
-
-    public function refund(Order $order): void
-    {
-        $this->authorize('update', $order);
-        $order->refund();
-    }
-
-    public function archiveSelected(): void
-    {
-        $orders = $this->store->orders()->whereIn('id', $this->selectedOrdersIds)->get();
-
-        foreach ($orders as $order) {
-            $this->archive($order);
-        }
-    }
-
-    public function archive(Order $order): void
-    {
-        $this->authorize('update', $order);
-        $order->archive();
-    }
-
-    #[Renderless]
-    public function export(): StreamedResponse
-    {
-        return $this->store->orders()->toCsv('orders.csv');
-    }
-
-    public function validSortKey(): string
-    {
-        return match ($this->sortColumn) {
-            'number' => 'number',
-            'status' => 'status',
-            'date' => 'ordered_at',
-            'amount' => 'amount',
-            default => ''
-        };
-    }
-
     public function render(): View
     {
-        $orders = $this->store->orders()
-            ->search($this->query)
-            ->sort($this->validSortKey(), $this->sortAsc ? 'asc' : 'desc')
-            ->paginate(5);
-
-        $this->ordersIdsPerPage = $this->orderIdsOnPage = $orders->map(fn ($order) => (string) $order->id)->toArray();
-
-        return view('livewire.order.index.page', [
-            'orders' => $orders,
-        ]);
+        return view('livewire.order.index.page');
     }
 }
