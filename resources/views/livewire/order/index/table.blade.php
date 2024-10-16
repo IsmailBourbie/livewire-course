@@ -1,4 +1,4 @@
-<div class="-m-1.5 overflow-x-auto space-y-4 bg-white p-8">
+<div>
     {{-- Search Input --}}
     <div class="flex justify-between items-center">
         <x-order.index.search/>
