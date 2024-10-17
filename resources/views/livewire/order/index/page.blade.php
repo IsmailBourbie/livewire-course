@@ -10,7 +10,11 @@
                     <p class="text-sm text-gray-500">{{$store->name}}</p>
                 </div>
 
-                <x-order.index.filter-products :filters="$filters"/>
+                <div class="flex gap-2">
+                    <x-order.index.filter-products :filters="$filters"/>
+
+                    <x-order.index.filter-range :filters="$filters"/>
+                </div>
 
             </div>
 
