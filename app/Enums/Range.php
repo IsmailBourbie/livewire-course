@@ -10,7 +10,7 @@ enum Range: string
     case Last_30 = 'last30';
     case Last_7 = 'last7';
     case Today = 'today';
-//    case Custom = 'custom';
+    case Custom = 'custom';
 
     public function label($start = null, $end = null): string
     {
@@ -20,9 +20,9 @@ enum Range: string
             Range::Last_30 => 'Last 30 Days',
             Range::Last_7 => 'Last 7 Days',
             Range::Today => 'Today',
-//            Range::Custom => ($start !== null && $end !== null)
-//                ? str($start)->replace('-', '/') . ' - ' . str($end)->replace('-', '/')
-//                : 'Custom Range',
+            Range::Custom => ($start !== null && $end !== null)
+                ? str($start)->replace('-', '/') . ' - ' . str($end)->replace('-', '/')
+                : 'Custom Range',
         };
     }
 
