@@ -20,6 +20,7 @@
 
             {{-- Filters --}}
 
+            <x-order.index.filter-status :$filters/>
             <livewire:order.index.chart :store="$store" :filters="$filters" lazy/>
 
             <livewire:order.index.table :store="$store" :filters="$filters" lazy/>
