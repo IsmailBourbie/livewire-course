@@ -2,7 +2,9 @@
 
 namespace App\Livewire;
 
+use App\Models\Todo;
 use Illuminate\View\View;
+use Livewire\Attributes\Computed;
 use Livewire\Attributes\Title;
 use Livewire\Component;
 
@@ -10,37 +12,29 @@ use Livewire\Component;
 class TodoList extends Component
 {
 
-    public string $todoItem = '';
-    public array $todos = [];
+    public string $draft;
 
-    public function mount(): void
+    #[Computed]
+    public function todos()
     {
-        // Common use case: fetch data from DB Ex: Todos::all();
-        $this->todos = [
-            'clean the dishes',
-            'run tests',
-            'play video game',
-            'read a book',
-            'watch a movie',
-        ];
-    }
-
-    public function updated($prop, $val): void
-    {
-        // Common use case: live validation;
-        $this->$prop = strtolower($val);
+        return auth()->user()->todos;
     }
 
     public function add(): void
     {
-        if (!empty(trim($this->todoItem))) {
-            $this->todos[] = $this->todoItem;
-            $this->reset('todoItem');
-        }
+       $this->todosQuery()->create([
+            'name' => $this->pull('draft'),
+           'position' => $this->todosQuery()->max('position') + 1
+        ]);
     }
 
     public function render(): View
     {
         return view('livewire.todo-list');
+    }
+
+    protected function todosQuery()
+    {
+        return auth()->user()->todos();
     }
 }

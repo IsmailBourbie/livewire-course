@@ -1,19 +1,17 @@
-<div class="bg-green-100 rounded min-h-screen flex items-center justify-center">
-    <div class="md:p-16 p-8 bg-white rounded-lg shadow-xl md:w-2/5">
-        <h1 class="text-3xl font-bold mb-6">To Do list</h1>
-        <form action="" wire:submit.prevent="add">
+<div class="bg-slate-100 rounded min-h-screen flex justify-center py-8">
+    <div class="md:p-16 p-8 md:w-4/5">
+        <form action="" wire:submit="add" class="text-center">
             <input type="text" name="item" aria-label="todo-item"
-                   class="px-4 py-2 border border-gray-200 rounded w-3/4"
-                   wire:model="todoItem">
-            <button type="submit"
-                    class="px-4 py-2 border border-blue-600 bg-blue-500 hover:bg-blue-600 text-blue-100 rounded">
-                Add
-            </button>
+                   class="px-6 py-3 border border-gray-200 shadow rounded-full w-5/12"
+                   placeholder="Today I'm gonna..."
+                   wire:model="draft">
         </form>
 
-        <ul class="px-5 mt-6 max-h-48 overflow-y-auto">
-            @foreach($todos as $todo)
-                <li class="my-2 capitalize list-decimal">{{$todo}}</li>
+        <ul class="mt-4">
+            @foreach($this->todos as $todo)
+                <li class="mx-auto my-2 capitalize px-6 py-3 border border-gray-200 bg-white shadow rounded-full w-5/12">
+                    <div class="text-slate-600">{{$todo->name}}</div>
+                </li>
             @endforeach
         </ul>
     </div>

@@ -15,7 +15,6 @@ Route::get('/', function () {
 });
 
 Route::get('counter', Counter::class);
-Route::get('todo-list', TodoList::class);
 Route::get('show-posts', ShowPosts::class);
 
 // Login Route
@@ -32,3 +31,8 @@ Route::middleware(['guest'])->get('signup', Signup::class)->name('signup');
 Route::get('/store/{store}/orders', Page::class)
     ->middleware(['can:view,store'])
     ->name('store.orders.index');
+
+// Drag sort
+Route::get('todo-list', TodoList::class)
+    ->middleware(['auth'])
+    ->name('todo-list.index');;

@@ -15,7 +15,7 @@
             <h2 class="text-2xl font-bold text-purple-600 mb-8">
                 <a href="/">Livewire Course</a>
             </h2>
-            <ul class="mt-10">
+            <ul class="mt-4">
                 <li>
                     <h5 class="text-lg font-bold text-purple-700 mb-1">Getting Started</h5>
                     <ul class="mx-2">
@@ -23,12 +23,6 @@
                             <a wire:navigate href="/counter"
                                class="{{request()->is('counter') ? "bg-purple-300 text-purple-700 font-bold" : "" }} text-blue-700 hover:bg-purple-300 inline-block w-full px-2 py-1 rounded">
                                 Counter
-                            </a>
-                        </li>
-                        <li>
-                            <a wire:navigate href="/todo-list"
-                               class="{{request()->is('todo-list') ? "bg-purple-300 text-purple-700 font-bold": "" }} text-blue-700 hover:bg-purple-300 inline-block w-full px-2 py-1 rounded ">
-                                Todo-list
                             </a>
                         </li>
                         <li>
@@ -41,7 +35,7 @@
                 </li>
             </ul>
             @auth
-                <ul class="mt-10">
+                <ul class="mt-4">
                     <li>
                         <h5 class="text-lg font-bold text-purple-700 mb-1">Form Essentials</h5>
                         <ul class="mx-2">
@@ -54,7 +48,7 @@
                         </ul>
                     </li>
                 </ul>
-                <ul class="mt-10">
+                <ul class="mt-4">
                     <li>
                         <h5 class="text-lg font-bold text-purple-700 mb-1">Data Tables</h5>
                         <ul class="mx-2">
@@ -62,6 +56,19 @@
                                 <a wire:navigate href="/store/{{auth()->user()->store->id}}/orders"
                                    class="{{request()->is('store/*/orders') ? "bg-purple-300 text-purple-700 font-bold" : "" }} text-blue-700 hover:bg-purple-300 inline-block w-full px-2 py-1 rounded">
                                     My Orders
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <ul class="mt-4">
+                    <li>
+                        <h5 class="text-lg font-bold text-purple-700 mb-1">Drag Sorting</h5>
+                        <ul class="mx-2">
+                            <li>
+                                <a wire:navigate href="/todo-list"
+                                   class="{{request()->is('todo-list') ? "bg-purple-300 text-purple-700 font-bold": "" }} text-blue-700 hover:bg-purple-300 inline-block w-full px-2 py-1 rounded ">
+                                    Todo-list
                                 </a>
                             </li>
                         </ul>
