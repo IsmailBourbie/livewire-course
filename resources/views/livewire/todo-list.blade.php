@@ -7,9 +7,12 @@
                    wire:model="draft">
         </form>
 
-        <ul class="mt-4">
+        <ul class="mt-4" x-sort="console.log('sorted', $item, $position)">
             @foreach($this->todos as $todo)
-                <li class="mx-auto my-2 capitalize px-6 py-3 border border-gray-200 bg-white shadow rounded-full w-5/12">
+                <li
+                    x-sort:item="{{$todo->id}}"
+                    wire:key="$todo->id"
+                    class="mx-auto my-2 capitalize px-6 py-3 border border-gray-200 bg-white shadow rounded-full w-5/12 cursor-grab">
                     <div class="text-slate-600">{{$todo->name}}</div>
                 </li>
             @endforeach
